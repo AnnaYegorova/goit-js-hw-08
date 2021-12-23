@@ -22,22 +22,23 @@ function onDataInput(event) {
 
 function onFormSubmit(event) {
   event.preventDefault();
-  const localStorageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  console.log('localStorage при Submit', localStorageData);
+  let localStorageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  console.log('localStorageData при Submit', localStorageData);
+  formData = {};
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
 function populateTextarea() {
   const localStorageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  if (localStorageData === null) {
+  if (localStorageData === null || localStorageData === undefined) {
     return;
   }
+  formData = localStorageData;
   console.log('localStorageData при обновлении', localStorageData);
   if (localStorageData) {
     refs.email.value = localStorageData.email;
     refs.message.value = localStorageData.message;
-  } else {
-    refs.email.value = formData.email;
-    refs.message.value = formData.message;
   }
+  refs.email.value;
+  refs.message.value;
 }
