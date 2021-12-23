@@ -35,8 +35,10 @@ function populateTextarea() {
   }
   formData = localStorageData;
   console.log('localStorageData при обновлении', localStorageData);
-  if (localStorageData) {
+  if (localStorageData.email) {
     refs.email.value = localStorageData.email;
+  }
+  if (localStorageData.message) {
     refs.message.value = localStorageData.message;
   }
   refs.email.value;
